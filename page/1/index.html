@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
-<script src="https://kevinfrost.dk/wp-content/themes/astra/js/vanta/vanta.topology.min.js"></script><title>Kevin Frost</title>
+<script src="https://kevinfrost.dk/wp-content/themes/astra/js/vanta/p5.min.js"></script>
+<script src="https://kevinfrost.dk/wp-content/themes/astra/js/vanta/vanta.topology.min.js"></script>
+<title>Kevin Frost</title>
 <link rel="dns-prefetch" href="//s.w.org">
 
 
@@ -17,6 +18,7 @@ html{font-size:93.75%;}a,.page-title{color:#0274be;}a:hover,a:focus{color:#3a3a3
 </style>
 <link rel="stylesheet" id="astra-menu-animation-css" href="https://kevinfrost.dk/wp-content/themes/astra/assets/css/minified/menu-animation.min.css" media="all">
 <link rel="stylesheet" id="wp-block-library-css" href="https://kevinfrost.dk/wp-includes/css/dist/block-library/style.min.css" media="all">
+<link rel="stylesheet" id="three-preview-css" href="https://kevinfrost.dk/wp-content/plugins/3r-elementor-timeline-widget/assets/css/style.css" media="all">
 <link rel="stylesheet" id="eae-css-css" href="https://kevinfrost.dk/wp-content/plugins/addon-elements-for-elementor-page-builder/assets/css/eae.min.css" media="all">
 <link rel="stylesheet" id="font-awesome-4-shim-css" href="https://kevinfrost.dk/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css" media="all">
 <link rel="stylesheet" id="font-awesome-5-all-css" href="https://kevinfrost.dk/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css" media="all">
@@ -30,7 +32,7 @@ html{font-size:93.75%;}a,.page-title{color:#0274be;}a:hover,a:focus{color:#3a3a3
 <link rel="stylesheet" id="elementor-pro-css" href="https://kevinfrost.dk/wp-content/plugins/elementor-pro/assets/css/frontend.min.css" media="all">
 <link rel="stylesheet" id="elementor-global-css" href="https://kevinfrost.dk/wp-content/uploads/elementor/css/global.css" media="all">
 <link rel="stylesheet" id="elementor-post-2-css" href="https://kevinfrost.dk/wp-content/uploads/elementor/css/post-2.css" media="all">
-<link rel="stylesheet" id="google-fonts-1-css" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&ver=5.5.3" media="all">
+<link rel="stylesheet" id="google-fonts-1-css" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPoppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&ver=5.5.3" media="all">
 
 <script src="https://kevinfrost.dk/wp-includes/js/jquery/jquery.js" id="jquery-core-js"></script>
 <script src="https://kevinfrost.dk/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js" id="font-awesome-4-shim-js"></script>
@@ -147,12 +149,12 @@ html{font-size:93.75%;}a,.page-title{color:#0274be;}a:hover,a:focus{color:#3a3a3
   }
 </style>
 
-<a href="#home" class="Link">HOME</a>
-<a href="#about" class="Link">ABOUT</a>
-<a class="Link">RESUME</a>
-<a class="Link">PORTFOLIO</a>
-<a class="Link">BLOG</a>
-<a href="#contact" class="Link">CONTACT</a>
+<a href="#home" class="Link">HJEM</a>
+<a href="#about" class="Link">OM MIG</a>
+<a href="#resume" class="Link">RESUME</a>
+<a href="#portfoio" class="Link">PORTFOLIO</a>
+<a href="#blog" class="Link">BLOG</a>
+<a href="#contact" class="Link">KONTAKT</a>
 		</div>
 				</div>
 						</div>
@@ -198,7 +200,212 @@ html{font-size:93.75%;}a,.page-title{color:#0274be;}a:hover,a:focus{color:#3a3a3
 				</div>
 				<div class="elementor-element elementor-element-b97b706 elementor-widget elementor-widget-text-editor" data-id="b97b706" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-					<div class="elementor-text-editor elementor-clearfix"><h4 class="font-weight-light about-title">There are many variations of passages of Lorem ipsum</h4><p class="text-muted mt-3">There are many variations of passages of Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. There are many variations of passages of .</p></div>
+					<div class="elementor-text-editor elementor-clearfix"><span style="border-left: 2px solid #d23e50; font-weight: 500; padding-left: 15px; font-size: 2rem; ;color: #ffffff; line-height: 1.618;">Om mig</span></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-83e2067 elementor-widget elementor-widget-text-editor" data-id="83e2067" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Mit navn er Kevin Frost. Jeg er 22 år og bor i Sorø. I øjeblikket læser jeg til datateknikker med speciale i programmering på ZBC Ringsted og er i praktik hos Dansk Plejeteknik i Høng</p></div>
+				</div>
+				</div>
+						</div>
+					</div>
+		</div>
+								</div>
+					</div>
+		</section>
+				<section class="has_eae_slider elementor-section elementor-top-section elementor-element elementor-element-1276692 elementor-section-full_width elementor-section-stretched elementor-hidden-desktop elementor-hidden-tablet elementor-hidden-phone elementor-section-height-default elementor-section-height-default" data-id="1276692" data-element_type="section" data-settings='{"stretch_section":"section-stretched","background_background":"classic"}'>
+						<div class="elementor-container elementor-column-gap-default">
+							<div class="elementor-row">
+					<div class="has_eae_slider elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-f1959ee" data-id="f1959ee" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-widget-wrap">
+						<div class="elementor-element elementor-element-5557c96 elementor-widget elementor-widget-text-editor" data-id="5557c96" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"></div>
+				</div>
+				</div>
+						</div>
+					</div>
+		</div>
+				<div class="has_eae_slider elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-0821835" data-id="0821835" data-element_type="column" data-settings='{"background_background":"classic","background_motion_fx_motion_fx_scrolling":"yes","background_motion_fx_devices":["desktop","tablet","mobile"]}'>
+			<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-widget-wrap">
+						<div class="elementor-element elementor-element-930f01c elementor-widget elementor-widget-text-editor" data-id="930f01c" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"></div>
+				</div>
+				</div>
+						</div>
+					</div>
+		</div>
+								</div>
+					</div>
+		</section>
+				<section class="has_eae_slider elementor-section elementor-top-section elementor-element elementor-element-6059049 elementor-section-full_width elementor-section-stretched elementor-section-height-default elementor-section-height-default" data-id="6059049" data-element_type="section" data-settings='{"stretch_section":"section-stretched"}'>
+						<div class="elementor-container elementor-column-gap-default">
+							<div class="elementor-row">
+					<div class="has_eae_slider elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-147fceb" data-id="147fceb" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-widget-wrap">
+						<div class="elementor-element elementor-element-dce2715 elementor-widget elementor-widget-text-editor" data-id="dce2715" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"></div>
+				</div>
+				</div>
+						</div>
+					</div>
+		</div>
+				<div class="has_eae_slider elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-b4dfe6f" data-id="b4dfe6f" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-widget-wrap">
+						<div class="elementor-element elementor-element-9534c5f elementor-widget elementor-widget-html" data-id="9534c5f" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<div id="resume"></div>
+		</div>
+				</div>
+				<div class="elementor-element elementor-element-088f7aa elementor-widget elementor-widget-text-editor" data-id="088f7aa" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><span style="border-left: 2px solid #d23e50; font-weight: 500; padding-left: 15px;font-size:2rem;;color: #ffffff;line-height: 1.618;
+">Resume</span></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6501b9e image-position-column elementor-widget elementor-widget-eae-timeline" data-id="6501b9e" data-element_type="widget" data-widget_type="eae-timeline.skin3">
+				<div class="elementor-widget-container">
+			        <section data-layout="left" class="eae-layout-left eae-timeline eae-timeline-alternate-no eae-tl-center">
+            <div class="eae-timline-progress-bar">
+                <div class="eae-pb-inner-line"></div>
+            </div>
+
+			
+								
+			            <div id="c9ac220" class="eae-timeline-item elementor-repeater-item-c9ac220 custom-image-style-no image-position-">
+
+                <div class="eae-tl-item-meta-wrapper">
+					
+                </div>
+
+                <div class="eae-tl-icon-wrapper" id="c9ac220">
+					                <div class="eae-icon eae-icon-item_icon eae-icon-view-stacked eae-icon-shape-circle eae-icon-type-">
+                    <div class="eae-icon-wrap">
+                                            </div>
+                </div>
+                                </div>
+                <div class="eae-tl-content-wrapper">
+					                        <div class="eae-tl-item-content">
+							                            <div class="eae-tl-content">
+                                <div class="eae-content-inner">
+                                    <div class="eae-tl-item-meta-wrapper-inner">
+										                                    </div>
+									<h3 class="eae-tl-item-title">Datatekniker med speciale i programmering (2019-Nuværende)</h3><div class="eae-tl-content-innner">IPhone tilde pour-over, sustainable cred roof party occupy master cleanse. Godard vegan heirloom sartorial flannel raw denim +1. Sriracha umami meditation, listicle chambray fanny pack blog organic Blue Bottle.</div>                                </div>
+                            </div>
+                        </div>
+						                </div>
+
+            </div>
+								
+			            <div id="b377b63" class="eae-timeline-item elementor-repeater-item-b377b63 custom-image-style-no image-position-">
+
+                <div class="eae-tl-item-meta-wrapper">
+					
+                </div>
+
+                <div class="eae-tl-icon-wrapper" id="b377b63">
+					                <div class="eae-icon eae-icon-item_icon eae-icon-view-stacked eae-icon-shape-circle eae-icon-type-">
+                    <div class="eae-icon-wrap">
+                                            </div>
+                </div>
+                                </div>
+                <div class="eae-tl-content-wrapper">
+					                        <div class="eae-tl-item-content">
+							                            <div class="eae-tl-content">
+                                <div class="eae-content-inner">
+                                    <div class="eae-tl-item-meta-wrapper-inner">
+										                                    </div>
+									<h3 class="eae-tl-item-title">IT Supporter uddannelse (2016-2019)</h3><div class="eae-tl-content-innner">Godard vegan heirloom sartorial flannel raw denim +1 umami gluten-free hella vinyl. Viral seitan chillwave, before they sold out wayfarers selvage skateboard Pinterest messenger bag.</div>                                </div>
+                            </div>
+                        </div>
+						                </div>
+
+            </div>
+				        </section>
+
+				</div>
+				</div>
+						</div>
+					</div>
+		</div>
+								</div>
+					</div>
+		</section>
+				<section class="has_eae_slider elementor-section elementor-top-section elementor-element elementor-element-ace6167 elementor-section-full_width elementor-section-stretched elementor-section-height-default elementor-section-height-default" data-id="ace6167" data-element_type="section" data-settings='{"stretch_section":"section-stretched"}'>
+						<div class="elementor-container elementor-column-gap-default">
+							<div class="elementor-row">
+					<div class="has_eae_slider elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-9b4772b" data-id="9b4772b" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-widget-wrap">
+						<div class="elementor-element elementor-element-c89587f elementor-widget elementor-widget-text-editor" data-id="c89587f" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"></div>
+				</div>
+				</div>
+						</div>
+					</div>
+		</div>
+				<div class="has_eae_slider elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-8b39e9b" data-id="8b39e9b" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-widget-wrap">
+						<div class="elementor-element elementor-element-9d02d1b elementor-widget elementor-widget-html" data-id="9d02d1b" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<div id="portfolio"></div>
+		</div>
+				</div>
+				<div class="elementor-element elementor-element-cab60fb elementor-widget elementor-widget-text-editor" data-id="cab60fb" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><span style="border-left: 2px solid #d23e50; font-weight: 500; padding-left: 15px; font-size: 2rem; ;color: #ffffff; line-height: 1.618;">Portfolio</span></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-8ccaedb elementor-widget elementor-widget-text-editor" data-id="8ccaedb" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"></div>
+				</div>
+				</div>
+						</div>
+					</div>
+		</div>
+								</div>
+					</div>
+		</section>
+				<section class="has_eae_slider elementor-section elementor-top-section elementor-element elementor-element-2e88a53 elementor-section-full_width elementor-section-stretched elementor-section-height-default elementor-section-height-default" data-id="2e88a53" data-element_type="section" data-settings='{"stretch_section":"section-stretched"}'>
+						<div class="elementor-container elementor-column-gap-default">
+							<div class="elementor-row">
+					<div class="has_eae_slider elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-48e6db5" data-id="48e6db5" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-widget-wrap">
+						<div class="elementor-element elementor-element-a8fd2d9 elementor-widget elementor-widget-text-editor" data-id="a8fd2d9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"></div>
+				</div>
+				</div>
+						</div>
+					</div>
+		</div>
+				<div class="has_eae_slider elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-ed1f7c1" data-id="ed1f7c1" data-element_type="column" data-settings='{"background_background":"classic"}'>
+			<div class="elementor-column-wrap elementor-element-populated">
+							<div class="elementor-widget-wrap">
+						<div class="elementor-element elementor-element-99ea55b elementor-widget elementor-widget-html" data-id="99ea55b" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<div id="blog"></div>
+		</div>
+				</div>
+				<div class="elementor-element elementor-element-08d7faf elementor-widget elementor-widget-text-editor" data-id="08d7faf" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><span style="border-left: 2px solid #d23e50; font-weight: 500; padding-left: 15px; font-size: 2rem; ;color: #ffffff; line-height: 1.618;">Blog</span></div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-09116d7 elementor-widget elementor-widget-text-editor" data-id="09116d7" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"></div>
 				</div>
 				</div>
 						</div>
@@ -235,9 +442,9 @@ html{font-size:93.75%;}a,.page-title{color:#0274be;}a:hover,a:focus{color:#3a3a3
 					<div class="has_eae_slider elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-75fef64b" data-id="75fef64b" data-element_type="column">
 			<div class="elementor-column-wrap elementor-element-populated">
 							<div class="elementor-widget-wrap">
-						<div class="elementor-element elementor-element-405849cc elementor-widget elementor-widget-heading" data-id="405849cc" data-element_type="widget" data-widget_type="heading.default">
+						<div class="elementor-element elementor-element-405849cc your-element-selector elementor-widget elementor-widget-heading" data-id="405849cc" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-			<h6 class="elementor-heading-title elementor-size-default">Contact me</h6>		</div>
+			<h6 class="elementor-heading-title elementor-size-default">Skal vi samarbejde om dit næste projekt, så kontakt mig gernes på mail eller telefon</h6>		</div>
 				</div>
 				<div class="elementor-element elementor-element-3a861ed elementor-widget elementor-widget-text-editor" data-id="3a861ed" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
@@ -260,17 +467,17 @@ html{font-size:93.75%;}a,.page-title{color:#0274be;}a:hover,a:focus{color:#3a3a3
 			
 			<div class="elementor-form-fields-wrapper elementor-labels-">
 								<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-100">
-					<label for="form-field-name" class="elementor-field-label elementor-screen-only">Name</label><input size="1" type="text" name="form_fields[name]" id="form-field-name" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Name">				</div>
+					<label for="form-field-name" class="elementor-field-label elementor-screen-only">Name</label><input size="1" type="text" name="form_fields[name]" id="form-field-name" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Navn">				</div>
 								<div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-100 elementor-field-required">
 					<label for="form-field-email" class="elementor-field-label elementor-screen-only">Email</label><input size="1" type="email" name="form_fields[email]" id="form-field-email" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Email" required="required" aria-required="true">				</div>
 								<div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-message elementor-col-100">
-					<label for="form-field-message" class="elementor-field-label elementor-screen-only">Message</label><textarea class="elementor-field-textual elementor-field  elementor-size-sm" name="form_fields[message]" id="form-field-message" rows="4" placeholder="Message"></textarea>				</div>
+					<label for="form-field-message" class="elementor-field-label elementor-screen-only">Message</label><textarea class="elementor-field-textual elementor-field  elementor-size-sm" name="form_fields[message]" id="form-field-message" rows="4" placeholder="Meddelelse"></textarea>				</div>
 								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
 					<button type="submit" class="elementor-button elementor-size-sm elementor-animation-grow">
 						<span>
 															<span class=" elementor-button-icon">
 																										</span>
-																						<span class="elementor-button-text">Send Message</span>
+																						<span class="elementor-button-text">SEND BESKED</span>
 													</span>
 					</button>
 				</div>
