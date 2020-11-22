@@ -1,0 +1,57 @@
+.nivoSlider {position: relative;width: 100%;height: auto;overflow: hidden;}
+.nivoSlider img {position: absolute;top: 0px;left: 0px;max-width: none;}
+.nivo-main-image {display: block !important;position: relative !important;width: 100% !important;}
+.nivoSlider a.nivo-imageLink {position: absolute;top: 0px;left: 0px;width: 100%;height: 100%;border: 0;padding: 0;margin: 0;z-index: 6;display: none;background: white;filter: alpha(opacity=0);opacity: 0;}
+.nivo-slice {display: block;position: absolute;z-index: 5;height: 100%;top: 0;}
+.nivo-box {display: block;position: absolute;z-index: 5;overflow: hidden;}
+.nivo-box img {display: block;}
+.nivo-caption {position: absolute;left: 0px;bottom: 0px;background: #000;color: #fff;width: 100%;z-index: 8;padding: 5px 10px;opacity: .8;overflow: hidden;display: none;-moz-opacity: .8;filter: alpha(opacity=8);-webkit-box-sizing: border-box;box-sizing: border-box;}
+.nivo-caption p {padding: 5px;margin: 0;}
+.nivo-caption a {display: inline !important;}
+.nivo-html-caption {display: none;}
+.nivo-directionNav a {position: absolute;top: 45%;z-index: 9;cursor: pointer;}
+.nivo-prevNav {left: 0px;}
+.nivo-nextNav {right: 0px;}
+.nivo-controlNav {text-align: center;padding: 15px 0;}
+.nivo-controlNav a {cursor: pointer;}
+.nivo-controlNav a.active {font-weight: bold;}
+.nivoSlider img {max-width: none !important;}
+.nivo-controlNav:not(.nivo-thumbs-enabled) {position: absolute;left: 0;text-align: center;width: 100%;margin: 0;padding: 0;bottom: 0;}
+.nivo-controlNav:not(.nivo-thumbs-enabled) a {display: block;display: inline-block;background: #aaa;border: 1px solid #aaa;border-radius: 50%;width: 12px;height: 12px;-webkit-box-shadow: none;box-shadow: none;-webkit-transition: background .2s ease-in 0s;transition: background .2s ease-in 0s;margin-right: 8px;float: none;text-indent: -9999px;vertical-align: middle;}
+.nivo-controlNav a.active, .nivo-controlNav a:hover {background: transparent;}
+.nivo-controlNav:not(.nivo-thumbs-enabled) a.active {width: 14px;height: 14px;background: transparent;}
+.nivo-controlNav.nivo-thumbs-enabled {width: 100%;margin: 0;text-align: left;}
+.nivo-controlNav.nivo-thumbs-enabled a {margin: 0;}
+.nivo-controlNav.nivo-thumbs-enabled a:first-child {margin-left: 0;}
+.nivo-controlNav.nivo-thumbs-enabled a img {margin-right: 10px;}
+.nivo-controlNav.nivo-thumbs-enabled img {display: inline-block !important;width: 120px;height: auto;border-radius: 2px;margin-top: 5px;}
+@media screen and (max-width: 860px) {.nivo-controlNav.nivo-thumbs-enabled img {width: 90px;}}
+.nivo-directionNav a, .nivo-directionNav a:hover {position: absolute;top: 50%;z-index: 10;opacity: 1;text-shadow: none;background: none;font-family: "lae-icomoon" !important;speak: none;font-style: normal;font-weight: normal;font-variant: normal;text-transform: none;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: #ddd;font-size: 32px;width: 36px;height: 36px;margin: -18px 0 0;bottom: initial;left: initial;right: initial;text-indent: 0;text-align: center;overflow: hidden;-webkit-transition: all .3s ease-in-out 0s;transition: all .3s ease-in-out 0s;}
+.nivo-directionNav a:hover {color: #efefef;}
+.nivo-directionNav a:before, .nivo-directionNav a:hover:before {margin: 2px;vertical-align: middle;display: inline;font-family: inherit !important;opacity: 1;}
+.nivo-directionNav a.nivo-prevNav:before {content: "";}
+.nivo-directionNav a.nivo-nextNav:before {content: "";}
+.nivo-directionNav a.nivo-nextNav {right: 20px;}
+.nivo-directionNav a.nivo-prevNav {left: 20px;}
+@media only screen and (max-width: 960px) {.nivo-directionNav a, .nivo-directionNav a:hover {display: none;}}
+.nivo-caption {position: absolute;left: 0;bottom: 20px;background: none;color: #fff;width: 100%;z-index: 8;padding: 25px 30px;opacity: 1;overflow: hidden;display: none;max-width: 600px;border-radius: 5px;}
+.nivo-caption h1, .nivo-caption h2, .nivo-caption h3 {color: #fff;font-size: 36px;line-height: 44px;}
+.nivo-caption p {color: #bbb;font-size: 14px;line-height: 22px;}
+.rslides {position: relative;list-style: none;overflow: hidden;width: 100%;padding: 0;margin: 0;}
+.rslides li {-webkit-backface-visibility: hidden;position: absolute;display: none;width: 100%;left: 0;top: 0;}
+.rslides li:first-child {position: relative;display: block;float: left;}
+.rslides img {display: block;height: auto;float: left;width: 100%;border: 0;}
+.rslides_container {position: relative;}
+.rslides_container .rslides_tabs {position: absolute;bottom: -50px;list-style: none;margin: 0 !important;padding: 0 !important;text-align: center;width: 100%;}
+.rslides_container .rslides_tabs li {display: inline-block;float: none;margin: 0 !important;padding: 0 !important;outline: none;}
+.rslides_container .rslides_tabs a {display: block;width: 12px;height: 12px;background: #aaa;border: 1px solid #aaa;border-radius: 50%;text-indent: -9999px;margin: 0 4px;-webkit-transition: background .2s ease-in 0s;transition: background .2s ease-in 0s;outline: none;}
+.rslides_container .rslides_tabs .rslides_here a, .rslides_container .rslides_tabs a:hover {background: transparent;border: 1px solid #aaa;margin: 0 4px;}
+.rslides_container .rslides_tabs .rslides_here a {width: 14px;height: 14px;}
+.rslides_nav, .rslides_nav:hover {position: absolute;top: 50%;z-index: 10;opacity: 1;text-shadow: none;background: none;font-family: "lae-icomoon" !important;speak: none;font-style: normal;font-weight: normal;font-variant: normal;text-transform: none;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: #ddd !important;font-size: 32px;width: 36px;height: 36px;margin: -18px 0 0;bottom: initial;left: initial;right: initial;text-indent: 0;text-align: center;overflow: hidden;-webkit-transition: all .3s ease-in-out 0s;transition: all .3s ease-in-out 0s;outline: none;}
+.rslides_nav:hover {color: #efefef !important;}
+.rslides_nav:before, .rslides_nav:hover:before {margin: 2px;vertical-align: middle;display: inline;font-family: inherit !important;opacity: 1;}
+.rslides_nav.prev:before {content: "";}
+.rslides_nav.next:before {content: "";}
+.rslides_nav.next {right: 20px;}
+.rslides_nav.prev {left: 20px;}
+@media only screen and (max-width: 960px) {.rslides_nav, .rslides_nav:hover {display: none;}}

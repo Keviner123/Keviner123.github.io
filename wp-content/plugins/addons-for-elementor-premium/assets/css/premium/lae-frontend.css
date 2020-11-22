@@ -1,0 +1,31 @@
+@charset "UTF-8";
+.lae-image-text-toggle {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;}
+.lae-image-text-toggle .lae-image-content, .lae-image-text-toggle .lae-text-content {-webkit-align-self: center;align-self: center;-ms-flex-item-align: center;margin: 0;width: 50%;}
+.lae-image-text-toggle .lae-image-content img {display: block;margin: 0 auto;}
+@media only screen and (max-width: 767px) {.lae-image-text-toggle {-webkit-box-orient: vertical;box-orient: vertical;-webkit-box-direction: normal;box-direction: normal;-moz-flex-direction: column;flex-direction: column;-ms-flex-direction: column;}
+	.lae-image-text-toggle .lae-image-content, .lae-image-text-toggle .lae-text-content {width: 100%;margin: 0;}
+	.lae-image-text-toggle .lae-image-content {-webkit-box-ordinal-group: 1;box-ordinal-group: 1;-moz-order: 1;order: 1;-ms-flex-order: 1;margin-bottom: 50px;}
+	.lae-image-text-toggle .lae-text-content {-webkit-box-ordinal-group: 2;box-ordinal-group: 2;-moz-order: 2;order: 2;-ms-flex-order: 2;padding: 0;}}
+.lae-clear {clear: both;}
+.lae-fancybox-caption .lae-fancybox-title, .lae-fancybox-caption .lae-fancybox-title:link, .lae-fancybox-caption .lae-fancybox-title:visited, .lae-fancybox-caption .lae-fancybox-post-author, .lae-fancybox-caption .lae-fancybox-post-author:link, .lae-fancybox-caption .lae-fancybox-post-author:visited {color: #eee;}
+.lae-fancybox-caption .lae-fancybox-description {font-size: 13px;line-height: 18px;color: #ccc;margin: 5px 0 0 0;margin: 5px auto;max-width: 800px;}
+.lae-fancybox-caption .lae-fancybox-read-more, .lae-fancybox-caption .lae-fancybox-read-more:link, .lae-fancybox-caption .lae-fancybox-read-more:visited {font-size: 11px;color: #bbb;text-transform: uppercase;letter-spacing: 1px;}
+.lae-fancybox-caption .lae-fancybox-read-more:after, .lae-fancybox-caption .lae-fancybox-read-more:link:after, .lae-fancybox-caption .lae-fancybox-read-more:visited:after {font-size: 14px;line-height: 1;content: "›";display: inline-block;margin-left: 7px;}
+.lae-fancybox-video {height: 100%;overflow: hidden;-o-object-fit: cover;object-fit: cover;}
+.lae-fancybox-video video {max-height: 100%;}
+#powerTip {cursor: default;background-color: #333;background-color: rgba(0,0,0,.8);border-radius: 6px;color: #fff;display: none;padding: 10px;position: absolute;white-space: nowrap;z-index: 2147483647;}
+#powerTip:before {content: "";position: absolute;}
+#powerTip.n:before, #powerTip.s:before {border-right: 5px solid transparent;border-left: 5px solid transparent;left: 50%;margin-left: -5px;}
+#powerTip.e:before, #powerTip.w:before {border-bottom: 5px solid transparent;border-top: 5px solid transparent;margin-top: -5px;top: 50%;}
+#powerTip.n:before {border-top: 10px solid #333;border-top: 10px solid rgba(0,0,0,.8);bottom: -10px;}
+#powerTip.e:before {border-right: 10px solid #333;border-right: 10px solid rgba(0,0,0,.8);left: -10px;}
+#powerTip.s:before {border-bottom: 10px solid #333;border-bottom: 10px solid rgba(0,0,0,.8);top: -10px;}
+#powerTip.w:before {border-left: 10px solid #333;border-left: 10px solid rgba(0,0,0,.8);right: -10px;}
+#powerTip.ne:before, #powerTip.se:before {border-right: 10px solid transparent;border-left: 0;left: 10px;}
+#powerTip.nw:before, #powerTip.sw:before {border-left: 10px solid transparent;border-right: 0;right: 10px;}
+#powerTip.ne:before, #powerTip.nw:before {border-top: 10px solid #333;border-top: 10px solid rgba(0,0,0,.8);bottom: -10px;}
+#powerTip.se:before, #powerTip.sw:before {border-bottom: 10px solid #333;border-bottom: 10px solid rgba(0,0,0,.8);top: -10px;}
+#powerTip.nw-alt:before, #powerTip.ne-alt:before, #powerTip.sw-alt:before, #powerTip.se-alt:before {border-top: 10px solid #333;border-top: 10px solid rgba(0,0,0,.8);bottom: -10px;border-left: 5px solid transparent;border-right: 5px solid transparent;left: 10px;}
+#powerTip.ne-alt:before {left: auto;right: 10px;}
+#powerTip.sw-alt:before, #powerTip.se-alt:before {border-top: none;border-bottom: 10px solid #333;border-bottom: 10px solid rgba(0,0,0,.8);bottom: auto;top: -10px;}
+#powerTip.se-alt:before {left: auto;right: 10px;}
