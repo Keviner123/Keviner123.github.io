@@ -2,34 +2,34 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://kevinfrost.dk/</loc>
-		<lastmod>2020-11-23T16:58:54+00:00</lastmod>
+		<lastmod>2020-12-05T02:20:57+00:00</lastmod>
 		<image:image>
 			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/ae7c7aa3-0d61-40e1-8f04-a5bb731dbeb5_200x200.png</image:loc>
 		</image:image>
 		<image:image>
-			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/vivaldi_V1LgrP4Rgf-2-1024x528.png</image:loc>
-			<image:title><![CDATA[vivaldi_V1LgrP4Rgf]]></image:title>
-			<image:caption><![CDATA[vivaldi_V1LgrP4Rgf]]></image:caption>
+			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/vivaldi_V1LgrP4Rgf-2-1024x5281-1.png</image:loc>
+			<image:title><![CDATA[vivaldi_V1LgrP4Rgf-2-1024x528[1]]]></image:title>
+			<image:caption><![CDATA[vivaldi_V1LgrP4Rgf-2-1024×528[1]]]></image:caption>
 		</image:image>
 		<image:image>
-			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/mk-1024x528.png</image:loc>
-			<image:title><![CDATA[mk]]></image:title>
-			<image:caption><![CDATA[mk]]></image:caption>
+			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/mk-1024x5281-1.png</image:loc>
+			<image:title><![CDATA[mk-1024x528[1]]]></image:title>
+			<image:caption><![CDATA[mk-1024×528[1]]]></image:caption>
 		</image:image>
 		<image:image>
-			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/ani-1024x528.png</image:loc>
-			<image:title><![CDATA[ani]]></image:title>
-			<image:caption><![CDATA[ani]]></image:caption>
+			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/ani-1024x5281-1.png</image:loc>
+			<image:title><![CDATA[ani-1024x5281-1]]></image:title>
+			<image:caption><![CDATA[ani-1024×5281-1]]></image:caption>
 		</image:image>
 		<image:image>
-			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/vivaldi_V1LgrP4Rgf-1-1024x528.png</image:loc>
-			<image:title><![CDATA[vivaldi_V1LgrP4Rgf]]></image:title>
-			<image:caption><![CDATA[vivaldi_V1LgrP4Rgf]]></image:caption>
+			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/vivaldi_V1LgrP4Rgf-1-1024x5281-1.png</image:loc>
+			<image:title><![CDATA[vivaldi_V1LgrP4Rgf-1-1024x528[1]]]></image:title>
+			<image:caption><![CDATA[vivaldi_V1LgrP4Rgf-1-1024×528[1]]]></image:caption>
 		</image:image>
 		<image:image>
-			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/vivaldi_V1LgrP4Rgf-1024x528.png</image:loc>
-			<image:title><![CDATA[vivaldi_V1LgrP4Rgf]]></image:title>
-			<image:caption><![CDATA[vivaldi_V1LgrP4Rgf]]></image:caption>
+			<image:loc>https://kevinfrost.dk/wp-content/uploads/2020/11/vivaldi_V1LgrP4Rgf-1024x5281-11.png</image:loc>
+			<image:title><![CDATA[vivaldi_V1LgrP4Rgf-1024x5281-11]]></image:title>
+			<image:caption><![CDATA[vivaldi_V1LgrP4Rgf-1024×5281-11]]></image:caption>
 		</image:image>
 	</url>
 	<url>
@@ -43,5 +43,5 @@ Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3
 
 Minified using disk
 
-Served from: localhost @ 2020-11-23 21:29:06 by W3 Total Cache
+Served from: localhost @ 2020-12-05 02:22:51 by W3 Total Cache
 -->
