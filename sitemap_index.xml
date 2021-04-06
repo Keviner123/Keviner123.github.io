@@ -2,23 +2,23 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<sitemap>
 		<loc>https://kevinfrost.dk/post-sitemap.xml</loc>
-		<lastmod>2020-11-10T21:12:22+00:00</lastmod>
+		<lastmod>2020-12-13T00:52:39+00:00</lastmod>
 	</sitemap>
 	<sitemap>
 		<loc>https://kevinfrost.dk/page-sitemap.xml</loc>
-		<lastmod>2020-12-05T02:20:57+00:00</lastmod>
+		<lastmod>2021-04-06T21:11:50+00:00</lastmod>
 	</sitemap>
 	<sitemap>
 		<loc>https://kevinfrost.dk/portfolio-sitemap.xml</loc>
-		<lastmod>2020-11-23T16:06:30+00:00</lastmod>
+		<lastmod>2020-12-25T02:02:16+00:00</lastmod>
 	</sitemap>
 	<sitemap>
 		<loc>https://kevinfrost.dk/category-sitemap.xml</loc>
-		<lastmod>2020-11-10T21:12:22+00:00</lastmod>
+		<lastmod>2020-12-13T00:52:39+00:00</lastmod>
 	</sitemap>
 	<sitemap>
 		<loc>https://kevinfrost.dk/portfolio_category-sitemap.xml</loc>
-		<lastmod>2020-11-23T16:06:30+00:00</lastmod>
+		<lastmod>2020-12-25T02:02:16+00:00</lastmod>
 	</sitemap>
 	<sitemap>
 		<loc>https://kevinfrost.dk/author-sitemap.xml</loc>
@@ -31,5 +31,5 @@ Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3
 
 Minified using disk
 
-Served from: localhost @ 2020-12-05 02:23:19 by W3 Total Cache
+Served from: localhost @ 2021-04-06 21:12:53 by W3 Total Cache
 -->

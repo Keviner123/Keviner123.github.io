@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://kevinfrost.dk/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?><!-- sitemap-generator-url="http://www.arnebrachhold.de" sitemap-generator-version="4.1.1" -->
-<!-- generated-on="December 5, 2020 2:23 am" -->
+<!-- generated-on="April 6, 2021 9:12 pm" -->
 <sitemapindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<sitemap>
 		<loc>https://kevinfrost.dk/sitemap-misc.xml</loc>
-		<lastmod>2020-12-05T02:20:57+00:00</lastmod>
+		<lastmod>2021-04-06T21:11:50+00:00</lastmod>
 	</sitemap>
 	<sitemap>
 		<loc>https://kevinfrost.dk/sitemap-pt-post-2020-11.xml</loc>
-		<lastmod>2020-11-10T21:12:22+00:00</lastmod>
+		<lastmod>2020-12-13T00:52:39+00:00</lastmod>
 	</sitemap>
 	<sitemap>
 		<loc>https://kevinfrost.dk/sitemap-pt-page-2020-11.xml</loc>
 		<lastmod>2020-11-12T22:33:23+00:00</lastmod>
 	</sitemap>
-</sitemapindex><!-- Request ID: e24193e8be3f58500b8ebb1bd63ed288; Queries for sitemap: 5; Total queries: 32; Seconds: 0.01; Memory for sitemap: 0MB; Total memory: 4MB -->
+</sitemapindex><!-- Request ID: 8522b00d798ca7a2716ac40e92b0957c; Queries for sitemap: 5; Total queries: 32; Seconds: 0.01; Memory for sitemap: 0MB; Total memory: 4MB -->
 
 <!--
 Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
 
 Minified using disk
 
-Served from: localhost @ 2020-12-05 02:23:18 by W3 Total Cache
+Served from: localhost @ 2021-04-06 21:12:52 by W3 Total Cache
 -->
