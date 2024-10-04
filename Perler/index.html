@@ -4,20 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Draggable Pixel Grid with Image Upload, Fit to Width, and Movable Line</title>
-
-	<script src="colors.js"></script>
 	<link rel="stylesheet" href="style.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <!-- Top bar -->
-    <div class="topbar">
-        <input type="file" id="fileInput" accept="image/*">
-        <button id="loadImage">Load Image</button>
-        <button id="fitToWidth">Fit to Width</button>
-        <button id="togglePalette">Hide Palette</button> <!-- Add this button -->
-        <button id="toggleAllColors">Disable All Colors</button> <!-- New button -->
+		<div class="topbar" style="
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		">
+        <input class="form-control" type="file" id="fileInput" accept="image/*" style="width:300px;">
+        
 
+		
+		<div style="display:flex;justify-content:center;">	
+            <button id="fitToWidth" class="btn btn-secondary">
+				<i class="fa-solid fa-lightbulb"></i> Zoom
+			</button>
 
+			<button id="toggleBlinking" class="btn btn-secondary">
+				<i class="fa-solid fa-lightbulb"></i> Toggle Blinking
+			</button>
+			
+			<button id="toggleSymbols" class="btn btn-secondary">
+				<i class="fa-solid fa-section"></i> Toggle Symbols
+			</button>
+			
+			<button id="togglePalette" class="btn btn-secondary">
+				<i class="fa-solid fa-palette"></i> Toggle Palette
+			</button>
+			
+			<button id="toggleAllColors" class="btn btn-secondary">
+				<i class="fa-solid fa-fill"></i> Disable All Colors
+			</button>
+		</div>
+	
     </div>
 
     <!-- Content with pixel grid -->
@@ -27,6 +51,7 @@
         </div>
         <!-- Floating color palette -->
         <div class="colorPalette" id="colorPalette">
+
             <!-- Dynamically populate the colors with checkboxes -->
         </div>
     </div>
@@ -38,454 +63,9 @@
         <span id="current_percentage"></span>
     </div>
 
-    <script>
-        // Get the canvas and context
-        const canvas = document.getElementById('pixelGrid');
-        const ctx = canvas.getContext('2d');
-        const container = document.querySelector('.content');
-        const scrollArea = document.getElementById('scrollArea');
 
-        const gridWidth = 57; // The grid is 57x57 cells
-        const gridHeight = 57;
-        let gridSize = 10; // Default size of each grid cell
-
-        // Set initial canvas dimensions
-        canvas.width = gridWidth * gridSize; // 570px width
-        canvas.height = gridHeight * gridSize; // 570px height
-
-        let currentImageData = null; // Store image data for redrawing
-        let currentLineRow = Math.floor(gridHeight / 2); // Start the line in the middle
-
-
-        // Function to populate color palette
-        const colorPalette = document.getElementById('colorPalette');
-
-        colors.forEach((color, index) => {
-            const colorLabel = document.createElement('label');
-            colorLabel.classList.add('colorLabel');
-
-            const colorCheckbox = document.createElement('input');
-            colorCheckbox.type = 'checkbox';
-            colorCheckbox.checked = true; // All colors are checked by default
-            colorCheckbox.dataset.index = index; // Save index to reference later
-
-            const colorSwatch = document.createElement('div');
-            colorSwatch.classList.add('colorSwatch');
-            colorSwatch.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
-
-            const colorName = document.createElement('span');
-            colorName.textContent = color.name;
-
-            colorLabel.appendChild(colorCheckbox);
-            colorLabel.appendChild(colorSwatch);
-            colorLabel.appendChild(colorName);
-            colorPalette.appendChild(colorLabel);
-        });
-
-        // Array to track which colors are enabled
-        const enabledColors = new Array(colors.length).fill(true);
-
-        let colorCounts = new Array(colors.length).fill(0);
-// Create an image object to store the placeholder image
-const placeholderImg = new Image();
-placeholderImg.src = "bg.png"; // Use your local bg.png file
-
-// Function to draw the grid and count pixels
-let redBarRow = 0; // Start the red bar at the first row (0-indexed)
-// Function to calculate and display the percentage of enabled pixels
-// Function to calculate and display the percentage of enabled colors based on their counts
-function updatePixelFillPercentage() {
-    // Sum of all pixels for enabled colors
-    const totalColorPixels = colorCounts.reduce((sum, count, index) => {
-        return sum + count; // Sum all colors' pixels
-    }, 0);
-
-    // Sum of pixels for enabled colors (only if their checkbox is checked)
-    const enabledColorPixels = colorCounts.reduce((sum, count, index) => {
-        return enabledColors[index] ? sum + count : sum;
-    }, 0);
-
-    // Calculate the percentage of enabled colors based on the color palette
-    const percentageFilled = ((enabledColorPixels / totalColorPixels) * 100).toFixed(2);
-
-    // Update the displayed percentage in the bottom bar
-    document.getElementById("current_percentage").textContent = `Filled Colors: ${percentageFilled}%`;
-}
-
-// Function to draw the grid and count pixels, including the red bar
-function drawGrid(imageData) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-    colorCounts.fill(0); // Reset color counts
-
-    for (let x = 0; x < gridWidth; x++) {
-        for (let y = 0; y < gridHeight; y++) {
-            const pixelIndex = (y * imageData.width + x) * 4; // Each pixel has 4 values (RGBA)
-            const r = imageData.data[pixelIndex];
-            const g = imageData.data[pixelIndex + 1];
-            const b = imageData.data[pixelIndex + 2];
-            const a = imageData.data[pixelIndex + 3]; // Alpha value
-
-            if (a === 0) {
-                // Transparent pixel, draw bg.png
-                ctx.drawImage(placeholderImg, x * gridSize, y * gridSize, gridSize, gridSize);
-            } else {
-                // Find the closest color
-                const closestColor = getClosestColor(r, g, b);
-
-                // If the color is disabled, draw bg.png instead
-                if (!enabledColors[closestColor.index]) {
-                    ctx.drawImage(placeholderImg, x * gridSize, y * gridSize, gridSize, gridSize);
-                } else {
-                    // If the color is enabled, draw the color
-                    ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-                    ctx.fillRect(x * gridSize, y * gridSize, gridSize, gridSize);
-                }
-
-                // Increment the count for the closest color
-                colorCounts[closestColor.index]++;
-            }
-        }
-    }
-
-    // Draw the red bar at the current row position
-    drawRedBar();
-
-    // Update the color palette with the pixel counts
-    updateColorPaletteWithCounts();
-
-    // Update the pixel fill percentage
-    updatePixelFillPercentage();
-}
-
-
-
-// Function to draw the red bar
-function drawRedBar() {
-    ctx.fillStyle = 'rgba(255, 0, 0, 1)'; // Semi-transparent red
-    ctx.fillRect(0, redBarRow * gridSize, canvas.width, gridSize); // Fill one row across the width
-}
-
-// Function to handle arrow key presses and move the red bar
-function handleKeyDown(event) {
-    if (event.key === 'ArrowUp') {
-        event.preventDefault();  // Correct way to prevent default scrolling behavior
-        if (redBarRow > 0) {
-            redBarRow--; // Move the red bar up by one row
-            drawGrid(currentImageData); // Redraw the grid
-        }
-    } else if (event.key === 'ArrowDown') {
-        event.preventDefault();  // Correct way to prevent default scrolling behavior
-        if (redBarRow < gridHeight - 1) {
-            redBarRow++; // Move the red bar down by one row
-            drawGrid(currentImageData); // Redraw the grid
-        }
-    }
-}
-
-
-
-
-// Function to update the color palette with pixel counts and sort by count
-function updateColorPaletteWithCounts() {
-    // Create an array of color objects that includes the count for each color
-    const colorsWithCounts = colors.map((color, index) => {
-        return {
-            name: color.name,
-            r: color.r,
-            g: color.g,
-            b: color.b,
-            count: colorCounts[index], // Add the pixel count
-            index: index // Keep track of original index
-        };
-    });
-
-    // Sort the colors based on the count (from most to least)
-    colorsWithCounts.sort((a, b) => b.count - a.count);
-
-    // Clear the current color palette
-    colorPalette.innerHTML = '';
-
-    // Re-populate the color palette with sorted colors
-    colorsWithCounts.forEach((colorData) => {
-        const colorLabel = document.createElement('label');
-        colorLabel.classList.add('colorLabel');
-
-        const colorCheckbox = document.createElement('input');
-        colorCheckbox.type = 'checkbox';
-        colorCheckbox.checked = enabledColors[colorData.index]; // Retain the enabled/disabled state
-        colorCheckbox.dataset.index = colorData.index; // Keep the original index for future reference
-
-        const colorSwatch = document.createElement('div');
-        colorSwatch.classList.add('colorSwatch');
-        colorSwatch.style.backgroundColor = `rgb(${colorData.r}, ${colorData.g}, ${colorData.b})`;
-
-        const colorName = document.createElement('span');
-        colorName.textContent = `${colorData.name} (${colorData.count} pixels)`;
-
-        colorLabel.appendChild(colorCheckbox);
-        colorLabel.appendChild(colorSwatch);
-        colorLabel.appendChild(colorName);
-        colorPalette.appendChild(colorLabel);
-    });
-}
-
-        // Function to handle toggling colors
-        colorPalette.addEventListener('change', (event) => {
-            const checkbox = event.target;
-            const colorIndex = parseInt(checkbox.dataset.index, 10);
-            enabledColors[colorIndex] = checkbox.checked; // Update enabled state
-
-            if (currentImageData) {
-                drawGrid(currentImageData); // Redraw grid with the updated colors
-            }
-        });
-
-        // Function to find the closest color by comparing RGB values
-        function getClosestColor(r, g, b) {
-            let closestColor = null;
-            let minDistance = Infinity;
-            let closestIndex = -1;
-
-            colors.forEach((color, index) => {
-                const distance = Math.sqrt(
-                    Math.pow(r - color.r, 2) + Math.pow(g - color.g, 2) + Math.pow(b - color.b, 2)
-                );
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestColor = color;
-                    closestIndex = index;
-                }
-            });
-
-            return { color: closestColor, index: closestIndex };
-        }
-
-        // Function to load an image and render it as a grid
-        const fileInput = document.getElementById('fileInput');
-        const loadImageButton = document.getElementById('loadImage');
-
-
-// Attach event listener to the document for arrow key presses
-document.addEventListener('keydown', handleKeyDown);
-
-// Ensure the red bar is drawn when the image is loaded
-loadImageButton.addEventListener('click', () => {
-    const file = fileInput.files[0];
-    if (file) {
-        const img = new Image();
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            img.src = e.target.result;
-            img.onload = function() {
-                const scaledWidth = gridWidth;
-                const scaledHeight = gridHeight;
-
-                const offCanvas = document.createElement('canvas');
-                const offCtx = offCanvas.getContext('2d');
-                offCanvas.width = gridWidth;
-                offCanvas.height = gridHeight;
-                offCtx.drawImage(img, 0, 0, scaledWidth, scaledHeight);
-
-                currentImageData = offCtx.getImageData(0, 0, gridWidth, gridHeight);
-
-                drawGrid(currentImageData); // Draw the image grid along with the red bar
-            };
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-        // Function to resize the canvas to fit the window width
-        const fitToWidthButton = document.getElementById('fitToWidth');
-        fitToWidthButton.addEventListener('click', () => {
-            fitCanvasToWidth();
-        });
-
-        function fitCanvasToWidth() {
-            const windowWidth = window.innerWidth; // Get the browser window width
-            gridSize = Math.floor(windowWidth / gridWidth); // Recalculate grid size based on new width
-            canvas.width = gridWidth * gridSize; // Resize canvas width
-            canvas.height = gridHeight * gridSize; // Resize canvas height proportionally
-            
-            scrollArea.style.width = `${canvas.width}px`; // Adjust scrollArea width to match canvas
-
-            if (currentImageData) {
-                drawGrid(currentImageData); // Redraw the grid with resized canvas
-            }
-        }
-
-        // Refit canvas when the window is resized
-        window.addEventListener('resize', () => {
-            fitCanvasToWidth();
-        });
-
-
-// Variables for pixel dragging and pixel counting
-let isDragging = false;
-let isCtrlDragging = false;
-let startX, startY, scrollLeft, scrollTop, startDragX, startDragY;
-let startGridX = 0, startGridY = 0; // Track starting grid cell
-let currentGridX = 0, currentGridY = 0; // Track current grid cell
-let pixelsMoved = 0;
-
-// Modify the mousedown event to detect if Ctrl is pressed and start the counting
-canvas.addEventListener('mousedown', (e) => {
-    if (e.ctrlKey) {
-        // Ctrl key is pressed, so enable pixel counting but disable dragging
-        isCtrlDragging = true;
-        startDragX = e.pageX;
-        startDragY = e.pageY;
-
-        // Convert starting mouse position to grid cell position
-        const rect = canvas.getBoundingClientRect();
-        startGridX = Math.floor((e.clientX - rect.left) / gridSize);
-        startGridY = Math.floor((e.clientY - rect.top) / gridSize);
-        currentGridX = startGridX;
-        currentGridY = startGridY;
-
-        pixelsMoved = 0; // Reset pixels moved
-    } else {
-        // Normal dragging without Ctrl key
-        isDragging = true;
-        canvas.style.cursor = 'grabbing';
-        startX = e.pageX - canvas.offsetLeft;
-        startY = e.pageY - canvas.offsetTop;
-        scrollLeft = container.scrollLeft;
-        scrollTop = container.scrollTop;
-    }
-});
-
-// Modify the mousemove event to calculate pixels moved if Ctrl is pressed, without dragging
-canvas.addEventListener('mousemove', (e) => {
-    if (isCtrlDragging) {
-        // Only calculate grid cell movement, don't drag
-        const rect = canvas.getBoundingClientRect();
-        const newGridX = Math.floor((e.clientX - rect.left) / gridSize);
-        const newGridY = Math.floor((e.clientY - rect.top) / gridSize);
-
-        // Check if we've moved into a new grid cell
-        if (newGridX !== currentGridX || newGridY !== currentGridY) {
-            pixelsMoved++; // Increment pixel count when moving into a new grid cell
-            currentGridX = newGridX; // Update current grid cell
-            currentGridY = newGridY;
-
-            // Display the pixel count in the bottom bar
-            document.getElementById("current_count").textContent = `Total pixels crossed: ${pixelsMoved+1}`;
-        }
-    } else if (isDragging) {
-        // Normal dragging behavior
-        e.preventDefault();
-
-        const x = e.pageX - canvas.offsetLeft;
-        const y = e.pageY - canvas.offsetTop;
-
-        const walkX = (x - startX) * 2; // Horizontal scroll multiplier
-        const walkY = (y - startY) * 2; // Vertical scroll multiplier
-
-        container.scrollLeft = scrollLeft - walkX;
-        container.scrollTop = scrollTop - walkY;
-    }
-});
-
-// Reset the dragging state on mouseup
-canvas.addEventListener('mouseup', () => {
-    isDragging = false;
-    isCtrlDragging = false;
-    canvas.style.cursor = 'default';
-
-    // If Ctrl-based dragging was happening, show the final pixel count
-    document.getElementById("current_count").textContent = `Total pixels crossed: ${pixelsMoved+1}`;
-});
-
-// Handle mouse leaving the canvas (optional to reset drag state)
-canvas.addEventListener('mouseleave', () => {
-    isDragging = false;
-    isCtrlDragging = false;
-    canvas.style.cursor = 'default';
-});
-
-
-
-
-// Get the canvas and context
-const canvas1 = document.getElementById('pixelGrid');
-const ctx1 = canvas1.getContext('2d');
-
-// Function to get color of the pixel on mousemove
-function getPixelColor(event) {
-    const rect = canvas.getBoundingClientRect();
-    const x = Math.floor((event.clientX - rect.left) / gridSize);
-    const y = Math.floor((event.clientY - rect.top) / gridSize);
-
-    if (x < 0 || x >= gridWidth || y < 0 || y >= gridHeight) {
-        return; // Out of bounds, don't process
-    }
-
-    const pixelIndex = (y * currentImageData.width + x) * 4;
-    const r = currentImageData.data[pixelIndex];
-    const g = currentImageData.data[pixelIndex + 1];
-    const b = currentImageData.data[pixelIndex + 2];
-    const a = currentImageData.data[pixelIndex + 3]; // Alpha channel
-
-    if (a === 0) {
-        document.getElementById("current_color").textContent = "Transparant";
-    } else {
-        // Find the closest color
-        const closestColorName = getClosestColor(r, g, b);
-        document.getElementById("current_color").textContent = closestColorName.color.name;
-    }
-}
-
-// Add event listener for mousemove to detect pixel color continuously
-canvas1.addEventListener('mousemove', getPixelColor);
-
-// Get the toggle button and the color palette element
-const togglePaletteButton = document.getElementById('togglePalette');
-const colorPaletteDiv = document.getElementById('colorPalette');
-
-// Variable to track whether the palette is currently visible or hidden
-let isPaletteVisible = true;
-
-// Function to toggle the visibility of the color palette
-togglePaletteButton.addEventListener('click', () => {
-    if (isPaletteVisible) {
-        colorPaletteDiv.style.display = 'none'; // Hide the palette
-        togglePaletteButton.textContent = 'Show Palette'; // Update button text
-    } else {
-        colorPaletteDiv.style.display = 'block'; // Show the palette
-        togglePaletteButton.textContent = 'Hide Palette'; // Update button text
-    }
-
-    // Toggle the state
-    isPaletteVisible = !isPaletteVisible;
-});
-// Get the toggle all colors button
-const toggleAllColorsButton = document.getElementById('toggleAllColors');
-
-// Variable to track whether all colors are currently enabled or disabled
-let areAllColorsEnabled = true;
-
-// Function to toggle all colors on or off
-toggleAllColorsButton.addEventListener('click', () => {
-    // Toggle the state of all colors
-    areAllColorsEnabled = !areAllColorsEnabled;
-
-    // Update all checkboxes in the color palette
-    const checkboxes = colorPalette.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((checkbox, index) => {
-        checkbox.checked = areAllColorsEnabled;
-        enabledColors[index] = areAllColorsEnabled; // Update the enabled state
-    });
-
-    // Redraw the grid to reflect the updated color state
-    if (currentImageData) {
-        drawGrid(currentImageData);
-    }
-
-    // Update the button text accordingly
-    toggleAllColorsButton.textContent = areAllColorsEnabled ? 'Disable All Colors' : 'Enable All Colors';
-});
-
-    </script>
 </body>
 </html>
+
+<script src="colors.js"></script>
+<script src="main.js"></script>
