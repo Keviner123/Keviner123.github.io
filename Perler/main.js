@@ -92,7 +92,6 @@ toggleSymbolsButton.addEventListener('click', () => {
     }
 });
 
-// Modify the drawGrid function to conditionally draw symbols
 function drawGrid(imageData) {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
     colorCounts.fill(0); // Reset color counts
@@ -136,6 +135,12 @@ function drawGrid(imageData) {
                         ctx.textBaseline = 'middle';
                         ctx.fillText(symbols[closestColor.index % symbols.length], x * gridSize + gridSize / 2, y * gridSize + gridSize / 2);
                     }
+
+                    // Now, draw a dashed outline around each pixel
+                    ctx.setLineDash([2, 2]); // Set dashed line style
+                    ctx.strokeStyle = 'black'; // Outline color (can adjust as needed)
+                    ctx.strokeRect(x * gridSize, y * gridSize, gridSize, gridSize); // Draw dashed rectangle
+                    ctx.setLineDash([]); // Reset line dash for future drawings
                 }
 
                 // Increment the count for the closest color
@@ -153,6 +158,7 @@ function drawGrid(imageData) {
     // Update the pixel fill percentage
     updatePixelFillPercentage();
 }
+
 
 
 
