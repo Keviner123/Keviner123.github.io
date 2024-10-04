@@ -1,0 +1,82 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Top bar styling */
+.topbar {
+	height: 50px;
+	background-color: #333;
+	color: white;
+	text-align: center;
+	line-height: 50px;
+	font-size: 20px;
+}
+
+.topbar button {
+	margin: 0 10px;
+}
+
+/* Bottom bar styling */
+.bottombar {
+	height: 50px;
+	background-color: #333;
+	color: white;
+	text-align: center;
+	line-height: 50px;
+	font-size: 20px;
+	margin-top: auto;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.bottombar > span{
+	width:33%
+}
+
+/* Container for draggable content */
+.content {
+	flex: 1;
+	overflow: auto; /* Enable scrolling */
+	display: flex;
+	justify-content: center;
+	align-items: flex-start; /* Align items to the top */
+	position: relative;
+}
+
+/* Canvas styling for the pixel grid */
+.draggable {
+	cursor: grab;
+}
+
+/* Floating color palette */
+.colorPalette {
+	top: 50px;
+	right: 0px;
+	width: 350px;
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 10px;
+	z-index: 1000;
+	max-height: calc(100% - 122px);
+	overflow-y: auto;
+	position: fixed;
+}
+
+/* Color label styling */
+.colorLabel {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+.colorSwatch {
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
